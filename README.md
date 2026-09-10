@@ -16,11 +16,9 @@ This is a Python implementation.
 
 **A Telegram-Web-like browser UI for a dump**: chat list, full message history with inline media, user profiles with a photo carousel, and global search across every conversation at once. **Live mode** supported: it runs the dumper in the background and streams new messages to the browser in real time.
 
-**Use case example.** Malware often hard-codes a Telegram bot token as its C2/exfil channel — recover that token and this viewer opens the operator's own bot like Telegram Web, so you can read exactly what was exfiltrated: victim fingerprints (host, user, IP, OS), stolen credentials, screenshots, and uploaded archives, laid out as ordinary chats.
+**Use case — pentesting a leaked bot token.** Telegram bot tokens turn up constantly on an engagement — hard-coded in a mobile/desktop app, committed to a repo, or sitting in a CI log, config file, or client-side bundle. On its own a token looks like a low-severity finding; loading it here shows the real blast radius. For an internal bot (support desk, IT/DevOps helper, AI assistant) that is every employee conversation with it — internal hostnames, VPN profiles, credentials, and infrastructure details — browsable and searchable, so you can scope the impact and evidence the finding in your report.
 
-
-
-![Web viewer](docs/webapp.png)
+![Web viewer — dump of an internal bot](docs/webapp-corporate.png)
 
 ### Run from a prebuilt image (Docker Hub)
 
