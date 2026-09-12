@@ -10,8 +10,8 @@ from telethon.tl.types import (
     PeerUser, PeerChat, PeerChannel,
     MessageEmpty, MessageMediaPhoto,
     ReplyInlineMarkup, KeyboardButton, KeyboardButtonUrl,
+    KeyboardButtonRow,
 )
-
 
 @pytest.fixture(autouse=True)
 def reset_module_state(monkeypatch, tmp_path):
@@ -242,11 +242,11 @@ async def test_process_message_records_keyboard_buttons(monkeypatch, capsys):
 
     m = _message(5, PeerUser(user_id=42), PeerUser(user_id=42), text="Choose an option")
     m.reply_markup = ReplyInlineMarkup(rows=[
-        [
+        KeyboardButtonRow(buttons=[
             KeyboardButton(text="Menu"),
             KeyboardButton(text="🔎 Search"),
             KeyboardButtonUrl(text="Website", url="https://example.com"),
-        ]
+        ])
     ])
 
     await dumper.process_message(FakeBot(), m)
