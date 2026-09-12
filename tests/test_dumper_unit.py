@@ -13,6 +13,7 @@ from telethon.tl.types import (
     KeyboardButtonRow,
 )
 
+
 @pytest.fixture(autouse=True)
 def reset_module_state(monkeypatch, tmp_path):
     monkeypatch.chdir(tmp_path)
